@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.android.dejavu.MainActivity">
+
+    <TextView
+        android:layout_margin="16dp"
+        android:textStyle="italic|bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sometimes you will never know the value of a moment until it becomes a memory..!"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fillViewport="true"
+        android:measureAllChildren="false"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/innerLay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            
+
+        </LinearLayout>
+
+
+
+    </HorizontalScrollView>
+
+</LinearLayout>
