@@ -4,29 +4,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.os.Handler;
-import android.view.Menu;
 
 public class SplashActivity extends AppCompatActivity {
+    private static boolean splashLoaded = false;
 
-    /** Duration of wait **/
-    private final int SPLASH_DISPLAY_LENGTH = 1000;
-
-    /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        setContentView(R.layout.activity_splash);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        /* New Handler to start the Main-Activity
-         * and close this Splash-Screen after some seconds.*/
-        new Handler().postDelayed(new Runnable(){
-            @Override
+        int secondsDelayed = 1;
+        new Handler().postDelayed(new Runnable() {
             public void run() {
-                /* Create an Intent that will start the Main-Activity. */
-                Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-                SplashActivity.this.startActivity(mainIntent);
-                SplashActivity.this.finish();
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                finish();
             }
-        }, SPLASH_DISPLAY_LENGTH);
+        }, secondsDelayed * 1000);
     }
 }

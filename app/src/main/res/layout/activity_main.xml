@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/splash1"
     android:orientation="vertical"
     tools:context="com.example.android.dejavu.MainActivity">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:textStyle="italic|bold"
+        android:textSize="16sp"
+        android:text="Sometimes you will never know the value of a moment until it becomes a memory..!
+So lets make some of yours unforgettable:"
+        android:textColor="#000000"
+        android:textStyle="italic|bold" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sometimes you will never know the value of a moment until it becomes a memory..!"/>
+        android:layout_height="match_parent">
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:fillViewport="true"
-        android:measureAllChildren="false"
-        android:scrollbars="none">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="Click to add your memory"
+            android:id="@+id/button"
+            android:textStyle="bold|italic"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16dp"
+            android:textColor="#000000"
+            android:alpha="0.5"/>
 
-        <LinearLayout
-            android:id="@+id/innerLay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal" >
-
-            
-
-        </LinearLayout>
-
-
-
-    </HorizontalScrollView>
+    </RelativeLayout>
 
 </LinearLayout>
