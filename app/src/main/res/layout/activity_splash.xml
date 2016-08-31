@@ -11,5 +11,4 @@
         android:src="@drawable/splash"
         android:scaleType="centerCrop"/>
 
-
 </LinearLayout>
