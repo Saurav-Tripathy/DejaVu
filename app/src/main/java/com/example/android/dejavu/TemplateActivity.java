@@ -23,13 +23,8 @@ import java.net.DatagramPacket;
 public class TemplateActivity extends AppCompatActivity {
 
     public static final int IMAGE_GALLERY_REQUEST = 20;
-
     private ImageView imageViewId1;
-    private ImageView imageViewId2;
-    private ImageView imageViewId3;
-    private ImageView imageViewId4;
-    private ImageView imageViewId5;
-
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +32,7 @@ public class TemplateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_template);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
+
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         imageViewId1 = (ImageView) findViewById(R.id.imageViewId1);
@@ -63,7 +59,7 @@ public class TemplateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(TemplateActivity.this, SummaryActivity.class);
+                Intent i = new Intent(TemplateActivity.this, Main2Activity.class);
                 Bundle extras = new Bundle();
 
                 EditText e = (EditText) findViewById(R.id.editQueryId);
@@ -74,12 +70,14 @@ public class TemplateActivity extends AppCompatActivity {
                 String s1 = e1.getText().toString();
                 i.putExtra("abd", s1);
 
-                ImageView im1 = (ImageView) findViewById(R.id.imageViewId1);
-                im1.buildDrawingCache();
-                Bitmap image1 = im1.getDrawingCache();
+                i.putExtra("uri", imageUri.toString());
 
-                extras.putParcelable("imageBitmap1", image1);
-                i.putExtras(extras);
+                ImageView im1 = (ImageView) findViewById(R.id.imageViewId1);
+//                im1.buildDrawingCache();
+//                Bitmap image1 = im1.getDrawingCache();
+//
+//                extras.putParcelable("imageBitmap1", image1);
+//                i.putExtras(extras);
 
                 startActivity(i);
 
@@ -95,7 +93,7 @@ public class TemplateActivity extends AppCompatActivity {
             if (requestCode == IMAGE_GALLERY_REQUEST) {
 
                 // address of the image in SD card.
-                Uri imageUri = data.getData();
+                imageUri = data.getData();
 
                 // declaring a stream to read the image data from the SD card.
                 InputStream inputStream;
