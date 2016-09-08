@@ -18,7 +18,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.DatagramPacket;
+
 
 public class TemplateActivity extends AppCompatActivity {
 
@@ -30,14 +30,19 @@ public class TemplateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_template);
+
+        // Home button that will take you back to MainActivity..
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
-
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        // Initializing image to its Id..
         imageViewId1 = (ImageView) findViewById(R.id.imageViewId1);
 
+        // Button for selecting image from your SD card..
         Button b1 = (Button) findViewById(R.id.button1);
+
+        // Listener for picking the image from SD card and displaying it in the TemplateActivity..
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,10 +55,10 @@ public class TemplateActivity extends AppCompatActivity {
             }
         });
 
-
-
-
+        // Button for saving the Content of your memory..
         Button saveButton = (Button) findViewById(R.id.saveButtonId);
+
+        // Listener for passing the content to Main2Activity..
         saveButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -62,22 +67,20 @@ public class TemplateActivity extends AppCompatActivity {
                 Intent i = new Intent(TemplateActivity.this, Main2Activity.class);
                 Bundle extras = new Bundle();
 
+                // For passing the name of your memory..
                 EditText e = (EditText) findViewById(R.id.editQueryId);
                 String s = e.getText().toString();
                 i.putExtra("abc", s);
 
+                // For passing the description of your memory..
                 EditText e1 = (EditText) findViewById(R.id.editTextId);
                 String s1 = e1.getText().toString();
                 i.putExtra("abd", s1);
 
+                // For passing the image..
                 i.putExtra("uri", imageUri.toString());
 
                 ImageView im1 = (ImageView) findViewById(R.id.imageViewId1);
-//                im1.buildDrawingCache();
-//                Bitmap image1 = im1.getDrawingCache();
-//
-//                extras.putParcelable("imageBitmap1", image1);
-//                i.putExtras(extras);
 
                 startActivity(i);
 
@@ -92,25 +95,21 @@ public class TemplateActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             if (requestCode == IMAGE_GALLERY_REQUEST) {
 
-                // address of the image in SD card.
+                // Address of the image in SD card..
                 imageUri = data.getData();
 
-                // declaring a stream to read the image data from the SD card.
+                // Declaring a stream to read the image data from the SD card..
                 InputStream inputStream;
-                // getting an input stream, based on URI of the image.
+
+                // Getting an input stream, based on URI of the image..
                 try {
                     inputStream = getContentResolver().openInputStream(imageUri);
-                    // getting a bitmap from the stream.
+
+                    // Getting a bitmap from the stream..
                     Bitmap image = BitmapFactory.decodeStream(inputStream);
-                    // showing image to the user.
 
+                    // Showing image to the user..
                     imageViewId1.setImageBitmap(image);
-
-//                            Intent newIntent = new Intent(this, SummaryActivity.class);
-//                            newIntent.putExtra("imageUri", imageUri);
-//                            startActivity(newIntent);
-
-
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
